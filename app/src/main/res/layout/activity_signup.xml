@@ -57,7 +57,7 @@
         tools:text="covid contact tracing but maybe better." />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/signupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="160dp"
@@ -69,14 +69,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/phoneNumberEditText"
+        android:id="@+id/phoneNumberEditTextSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="phone number here"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintBottom_toTopOf="@+id/signupButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         app:layout_constraintVertical_bias="0.727" />
 
     <TextView
-        android:id="@+id/singUpTextView"
+        android:id="@+id/redirectToLoginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Already have an account? Click here"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintTop_toBottomOf="@+id/signupButton"
         app:layout_constraintVertical_bias="0.049" />
 
 
