@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,8 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.loginButton:
+                phoneNumber = phoneNumberEditText.getText().toString();
+                Log.i("Phone number Login", phoneNumber);
                 if (isPhoneNumberValid()){
-                    startActivity(new Intent(this, signup.class));
+                    startActivity(new Intent(this, HomePage.class));
                 } else {
                     Toast.makeText(this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 }
@@ -47,9 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private boolean isPhoneNumberValid(){
-        phoneNumber = phoneNumberEditText.getText().toString();
-        if(phoneNumber.charAt(0) != '+') return false;
         if(phoneNumber.length()<11)  return false;
+        if(phoneNumber.charAt(0) != '+') return false;
         return true;
     }
 

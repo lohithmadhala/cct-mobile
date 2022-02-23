@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +37,7 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
         switch(v.getId()){
             case R.id.signupButton:
                 phoneNumber = phoneNumberEditText.getText().toString();
+                Log.i("phone number sign up", phoneNumber);
                 if(isPhoneNumberValid()){
                     signUpUser();
                     startActivity(new Intent(this, MainActivity.class));
@@ -49,8 +51,8 @@ public class signup extends AppCompatActivity implements View.OnClickListener{
     }
 
     private boolean isPhoneNumberValid(){
-        if(phoneNumber.charAt(0) != '+') return false;
         if(phoneNumber.length()<11)  return false;
+        if(phoneNumber.charAt(0) != '+') return false;
         return true;
     }
 

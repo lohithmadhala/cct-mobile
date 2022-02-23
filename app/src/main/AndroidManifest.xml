@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cct_mobile">
         <activity
+            android:name=".HomePage"
+            android:exported="false" />
+        <activity
             android:name=".signup"
             android:exported="false" />
         <activity
