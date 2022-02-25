@@ -11,18 +11,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class HomePage extends AppCompatActivity {
 
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
+
+    private static HomePage instance;
+
+    public static HomePage getInstance(){
+        return instance;
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page2);
-
+        instance = this;
         if(ContextCompat.checkSelfPermission(
                 getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION
         ) != PackageManager.PERMISSION_GRANTED) {
@@ -34,6 +47,17 @@ public class HomePage extends AppCompatActivity {
         } else {
             startLocationService();
         }
+    }
+
+    public void updateTextView(double lat, double lng){
+        TextView textView = findViewById(R.id.latlngInfo);
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        String newText = "Latitude: "+ lat +" degrees \n Longitude:"
+                + lng +"degrees \n Time: "+ dateFormat.format(date);
+
+        textView.setText(newText);
     }
 
 

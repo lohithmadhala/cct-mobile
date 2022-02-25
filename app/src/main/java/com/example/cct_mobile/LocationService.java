@@ -26,6 +26,8 @@ public class LocationService extends Service {
     public LocationService() {
     }
 
+    private static final int INTERVAL = 10000; // 15 mins is 900000 seconds
+
     private LocationCallback locationCallback = new LocationCallback() {
 
         @Override
@@ -35,6 +37,7 @@ public class LocationService extends Service {
                 double lat = locationResult.getLastLocation().getLatitude();
                 double lng = locationResult.getLastLocation().getLongitude();
                 Log.i("Location updates ->", lat + " " + lng);
+                HomePage.getInstance().updateTextView(lat, lng);
             }
         }
     };
@@ -83,8 +86,8 @@ public class LocationService extends Service {
         }
 
         LocationRequest locationRequest = new LocationRequest();
-        locationRequest.setInterval(1000);
-        locationRequest.setFastestInterval(500);
+        locationRequest.setInterval(INTERVAL);
+        locationRequest.setFastestInterval(INTERVAL);
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
