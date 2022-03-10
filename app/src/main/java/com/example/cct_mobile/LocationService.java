@@ -22,6 +22,10 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+
 public class LocationService extends Service {
     public LocationService() {
     }
@@ -37,7 +41,11 @@ public class LocationService extends Service {
                 double lat = locationResult.getLastLocation().getLatitude();
                 double lng = locationResult.getLastLocation().getLongitude();
                 Log.i("Location updates ->", lat + " " + lng);
-                HomePage.getInstance().updateTextView(lat, lng);
+                try {
+                    HomePage.getInstance().updateTextView(lat, lng);
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }
     };
