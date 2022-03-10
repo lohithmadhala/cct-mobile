@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 phoneNumber = phoneNumberEditText.getText().toString();
                 Log.i("Phone number Login", phoneNumber);
                 if (isPhoneNumberValid()){
-                    startActivity(new Intent(this, HomePage.class));
+                    startActivity(new Intent(this, HomePage.class).putExtra("Phone", phoneNumber));
                 } else {
                     Toast.makeText(this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 }
